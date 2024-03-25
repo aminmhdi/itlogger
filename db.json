@@ -1,0 +1,47 @@
+{
+  "logs": [
+    {
+      "id": "1",
+      "message": "Change hard drive on computer 1",
+      "attention": true,
+      "date": "03-02-2019",
+      "tech": "Sam Smith"
+    },
+    {
+      "id": "2",
+      "message": "Workstation 2 is not booting up",
+      "attention": false,
+      "date": "03-03-2019",
+      "tech": "John Doe"
+    },
+    {
+      "id": "3",
+      "message": "Changed memory on workstation 3",
+      "attention": true,
+      "date": "03-04-2019",
+      "tech": "Sam Smith"
+    }
+  ],
+  "techs": [
+    {
+      "id": "1",
+      "firstName": "Sam",
+      "lastName": "Smith"
+    },
+    {
+      "id": "2",
+      "firstName": "John",
+      "lastName": "Doe"
+    },
+    {
+      "id": "3",
+      "firstName": "Sara",
+      "lastName": "Wilson"
+    },
+    {
+      "id": "4",
+      "firstName": "Amin",
+      "lastName": "Mohammadi"
+    }
+  ]
+}
