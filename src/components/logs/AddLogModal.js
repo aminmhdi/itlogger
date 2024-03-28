@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { addLog } from "../../actions/logActions";
 import M from "materialize-css/dist/js/materialize.min.js";
 
-const AddLogModal = () => {
+const AddLogModal = ({ addLog }) => {
   const [message, setMessage] = useState("");
   const [attention, setAttention] = useState(false);
   const [tech, setTech] = useState("");
@@ -11,7 +14,17 @@ const AddLogModal = () => {
     if (message === "" || tech === "") {
       M.toast({ html: "Please enter a message and tech!" });
     } else {
-      console.log(message, tech, attention);
+      const newLog = {
+        message,
+        attention,
+        tech,
+        date: new Date()
+      };
+
+      addLog(newLog);
+
+      M.toast({ html: `Log added by ${tech}` });
+
       // Clear fields
       setMessage("");
       setTech("");
@@ -20,7 +33,11 @@ const AddLogModal = () => {
   };
 
   return (
-    <div id="add-log-modal" className="modal" style={modalStyle}>
+    <div
+      id="add-log-modal"
+      className="modal"
+      style={modalStyle}
+    >
       <div className="modal-content">
         <h4>Enter system log</h4>
         <div className="row">
@@ -31,7 +48,10 @@ const AddLogModal = () => {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
             />
-            <label htmlFor="message" className="active">
+            <label
+              htmlFor="message"
+              className="active"
+            >
               {" "}
               Log Message{" "}
             </label>
@@ -45,7 +65,10 @@ const AddLogModal = () => {
               onChange={(e) => setTech(e.target.value)}
               className="browser-default"
             >
-              <option value="" disabled>
+              <option
+                value=""
+                disabled
+              >
                 Select technician
               </option>
               <option value="John Doe">John Doe</option>
@@ -85,9 +108,13 @@ const AddLogModal = () => {
   );
 };
 
-const modalStyle = {
-  width: "75%",
-  height: "75%",
+AddLogModal.propTypes = {
+  addLog: PropTypes.func.isRequired
 };
 
-export default AddLogModal;
+const modalStyle = {
+  width: "75%",
+  height: "75%"
+};
+
+export default connect(null, { addLog })(AddLogModal);
