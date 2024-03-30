@@ -9,7 +9,7 @@ const Logs = ({ log: { logs, loading }, getLogs }) => {
   useEffect(() => {
     getLogs();
     // eslint-disable-next-line
-  }, [logs]);
+  }, []);
 
   if (loading || logs == null) {
     return <Preloader />;
